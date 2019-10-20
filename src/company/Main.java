@@ -19,7 +19,7 @@ public class Main {
         int menu, length;
         boolean exit = false;
         System.out.print("Enter quantity of passengers: ");
-        length = isPositive(str);
+        length = getInt();
         final Passengers passengers = new Passengers(length);
         System.out.println("Enter the information of all the passengers: ");
         createPassenger(passengers, str, length);
@@ -28,11 +28,11 @@ public class Main {
         while (!exit) {
             System.out.println("1) Add passenger\n2) Show all passengers\n3) Show all passengers` sum mass of baggage\n" +
                     "4) Location of baggage\n5) Remove passenger by last name\n6) Exit");
-            menu = isPositive(str);
+            menu = getInt();
             switch (menu) {
                 case 1:
                     System.out.print("Enter quantity of add passengers: ");
-                    length = isPositive(str);
+                    length = getInt();
                     System.out.println("Enter the information of all the add passengers: ");
                     createPassenger(passengers, str, length);
                     System.out.println(passengers.massOver30());
@@ -75,9 +75,9 @@ public class Main {
             System.out.print("Patronymic: ");
             patronymic = str.next();
             System.out.print("Number flight: ");
-            numberFlight = isNumberFlight(str);
+            numberFlight = getNumberFlight();
             System.out.println("Level of place:\n1) First class\n2) Business class\n3)Eco class");
-            numberLevel = isPositive(str);
+            numberLevel = getInt();
             switch (numberLevel) {
                 case 1:
                     levelOfPlace = LevelOfPlace.FIRST;
@@ -95,9 +95,9 @@ public class Main {
             }
             System.out.println(levelOfPlace.toString());
             System.out.print("Number baggage: ");
-            numberBaggage = isNumberBaggage(str);
+            numberBaggage = getNumberBaggage();
             System.out.println("Level of baggage:\n1) Hand luggage\n2) In luggage");
-            numberLevelBaggage = isPositive(str);
+            numberLevelBaggage = getInt();
             switch (numberLevelBaggage) {
                 case 1:
                     levelOfBaggage = LevelOfBaggage.HANDLUGGAGE;
@@ -111,10 +111,10 @@ public class Main {
                     break;
             }
             System.out.print("Quantity place: ");
-            quantityPlace = isPositive(str);
+            quantityPlace = getInt();
             for (int j = 0; j < quantityPlace; j++) {
                 System.out.print((j + 1) + ") Mass of baggage: ");
-                sumMassOfBaggage += isPositive(str);
+                sumMassOfBaggage += getInt();
             }
             passengers.pushBack(new Passenger(name, lastName, patronymic, numberFlight, levelOfPlace.toString(), numberBaggage, levelOfBaggage.toString(), quantityPlace, sumMassOfBaggage));
         }
